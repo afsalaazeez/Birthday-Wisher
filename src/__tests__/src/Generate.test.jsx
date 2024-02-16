@@ -9,12 +9,24 @@ import Generate from "../../Generate.jsx";
 
 describe("Generate component", () => {
   test("renders without crashing", () => {
-    render(<Generate />);
+    render(
+      <Router>
+        {" "}
+        {/* Wrap Generate component with Router */}
+        <Generate />
+      </Router>
+    );
     expect(screen.getByText("Generate Here")).toBeInTheDocument();
   });
 
   test("input fields can be updated", () => {
-    render(<Generate />);
+    render(
+      <Router>
+        {" "}
+        {/* Wrap Generate component with Router */}
+        <Generate />
+      </Router>
+    );
     const nameInput = screen.getByPlaceholderText("Enter Name");
     fireEvent.change(nameInput, { target: { value: "John Doe" } });
     expect(nameInput.value).toBe("John Doe");
@@ -25,7 +37,13 @@ describe("Generate component", () => {
   });
 
   test("link generation functionality", () => {
-    render(<Generate />);
+    render(
+      <Router>
+        {" "}
+        {/* Wrap Generate component with Router */}
+        <Generate />
+      </Router>
+    );
     const nameInput = screen.getByPlaceholderText("Enter Name");
     fireEvent.change(nameInput, { target: { value: "Jane" } });
     const dayInput = screen.getByPlaceholderText("Enter Day");
@@ -40,7 +58,13 @@ describe("Generate component", () => {
   });
 
   test("generated link display", () => {
-    render(<Generate />);
+    render(
+      <Router>
+        {" "}
+        {/* Wrap Generate component with Router */}
+        <Generate />
+      </Router>
+    );
     fireEvent.click(screen.getByText("Generate Link"));
     const linkElement = screen.queryByText(
       /^https:\/\/birthday-wisher.netlify.app\/birthday\//

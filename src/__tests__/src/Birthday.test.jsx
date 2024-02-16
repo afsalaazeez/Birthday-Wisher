@@ -14,21 +14,39 @@ describe("Birthday Component", () => {
 
   // Test if the component renders correctly with valid props
   test("renders with valid name, day, and month props", () => {
-    render(<Birthday name="John Doe" day={15} month={5} />);
+    render(
+      <Router>
+        {" "}
+        {/* Wrap Generate component with Router */}
+        <Birthday name="John Doe" day={15} month={5} />
+      </Router>
+    );
     const countdownElement = screen.getByTestId("countdown");
     expect(countdownElement).toBeInTheDocument();
   });
 
   // Test if the component handles default values when props are not provided
   test("handles default props when none are provided", () => {
-    render(<Birthday />);
+    render(
+      <Router>
+        {" "}
+        {/* Wrap Generate component with Router */}
+        <Birthday />
+      </Router>
+    );
     const defaultName = screen.getByText(/deepankar/i);
     expect(defaultName).toBeInTheDocument();
   });
 
   // Test if the component shows the birthday link when it is not the birthday
   test("shows generate link when it is not the birthday", () => {
-    render(<Birthday name="Jane Doe" day={30} month={12} />);
+    render(
+      <Router>
+        {" "}
+        {/* Wrap Generate component with Router */}
+        <Birthday name="Jane Doe" day={30} month={12} />{" "}
+      </Router>
+    );
     const generateLinkElement = screen.getByText("Generate Here");
     expect(generateLinkElement).toBeInTheDocument();
   });
@@ -39,7 +57,13 @@ describe("Birthday Component", () => {
     jest.useFakeTimers("modern");
     jest.setSystemTime(mockDate);
 
-    render(<Birthday name="Jane Doe" day={30} month={12} />);
+    render(
+      <Router>
+        {" "}
+        {/* Wrap Generate component with Router */}
+        <Birthday name="Jane Doe" day={30} month={12} />{" "}
+      </Router>
+    );
     act(() => {
       jest.advanceTimersByTime(1000); // Advance timers to trigger useEffect
     });

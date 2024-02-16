@@ -19,12 +19,24 @@ describe("RouterBirthday component", () => {
   };
 
   test("renders without crashing", () => {
-    const { unmount } = render(<RouterBirthday {...mockProps} />);
+    const { unmount } = render(
+      <Router>
+        {" "}
+        {/* Wrap Generate component with Router */}
+        <RouterBirthday {...mockProps} />
+      </Router>
+    );
     unmount();
   });
 
   test("passes correct params to Birthday component", () => {
-    const { getByTestId } = render(<RouterBirthday {...mockProps} />);
+    const { getByTestId } = render(
+      <Router>
+        {" "}
+        {/* Wrap Generate component with Router */}
+        <RouterBirthday {...mockProps} />
+      </Router>
+    );
 
     // Assuming Birthday component uses passed props and renders them in elements with proper 'data-testid's
     const nameElement = getByTestId("birthday-name");
