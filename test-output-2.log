@@ -1,0 +1,298 @@
+ test results after <Link> was added in the test files
+ ======================================================
+ FAIL  src/__tests__/src/Wish.test.jsx
+  ● Test suite failed to run
+
+    Cannot find module '../Wish.jsx' from 'Wish.test.jsx'
+
+       6 | import { render, screen } from "@testing-library/react";
+       7 | import "@testing-library/jest-dom/extend-expect";
+    >  8 | import Wish from "../Wish.jsx";
+         | ^
+       9 |
+      10 | describe("Wish component tests", () => {
+      11 |   // Test case 1: Component renders with a name passed as a prop
+
+      at Resolver.resolveModule (node_modules/jest-resolve/build/index.js:259:17)
+      at Object.<anonymous> (src/__tests__/src/Wish.test.jsx:8:1)
+
+ FAIL  src/__tests__/src/RouterBirthday.test.jsx
+  ● RouterBirthday component › renders without crashing
+
+    ReferenceError: Router is not defined
+
+      21 |   test("renders without crashing", () => {
+      22 |     const { unmount } = render(
+    > 23 |       <Router>
+         |        ^
+      24 |         {" "}
+      25 |         {/* Wrap Generate component with Router */}
+      26 |         <RouterBirthday {...mockProps} />
+
+      at Object.<anonymous> (src/__tests__/src/RouterBirthday.test.jsx:23:8)
+
+  ● RouterBirthday component › passes correct params to Birthday component
+
+    ReferenceError: Router is not defined
+
+      32 |   test("passes correct params to Birthday component", () => {
+      33 |     const { getByTestId } = render(
+    > 34 |       <Router>
+         |        ^
+      35 |         {" "}
+      36 |         {/* Wrap Generate component with Router */}
+      37 |         <RouterBirthday {...mockProps} />
+
+      at Object.<anonymous> (src/__tests__/src/RouterBirthday.test.jsx:34:8)
+
+ FAIL  src/__tests__/src/index.test.js
+  ● Test suite failed to run
+
+    Cannot find module '../App' from 'index.test.js'
+
+       6 | import { render, screen } from "@testing-library/react";
+       7 | import "@testing-library/jest-dom/extend-expect";
+    >  8 | import App from "../App"; // Updated import path considering file location
+         | ^
+       9 |
+      10 | // Test suite for the App component
+      11 | describe("App component", () => {
+
+      at Resolver.resolveModule (node_modules/jest-resolve/build/index.js:259:17)
+      at Object.<anonymous> (src/__tests__/src/index.test.js:8:1)
+
+ FAIL  src/__tests__/src/Generate.test.jsx
+  ● Generate component › renders without crashing
+
+    ReferenceError: Router is not defined
+
+      11 |   test("renders without crashing", () => {
+      12 |     render(
+    > 13 |       <Router>
+         |        ^
+      14 |         {" "}
+      15 |         {/* Wrap Generate component with Router */}
+      16 |         <Generate />
+
+      at Object.<anonymous> (src/__tests__/src/Generate.test.jsx:13:8)
+
+  ● Generate component › input fields can be updated
+
+    ReferenceError: Router is not defined
+
+      22 |   test("input fields can be updated", () => {
+      23 |     render(
+    > 24 |       <Router>
+         |        ^
+      25 |         {" "}
+      26 |         {/* Wrap Generate component with Router */}
+      27 |         <Generate />
+
+      at Object.<anonymous> (src/__tests__/src/Generate.test.jsx:24:8)
+
+  ● Generate component › link generation functionality
+
+    ReferenceError: Router is not defined
+
+      39 |   test("link generation functionality", () => {
+      40 |     render(
+    > 41 |       <Router>
+         |        ^
+      42 |         {" "}
+      43 |         {/* Wrap Generate component with Router */}
+      44 |         <Generate />
+
+      at Object.<anonymous> (src/__tests__/src/Generate.test.jsx:41:8)
+
+  ● Generate component › generated link display
+
+    ReferenceError: Router is not defined
+
+      60 |   test("generated link display", () => {
+      61 |     render(
+    > 62 |       <Router>
+         |        ^
+      63 |         {" "}
+      64 |         {/* Wrap Generate component with Router */}
+      65 |         <Generate />
+
+      at Object.<anonymous> (src/__tests__/src/Generate.test.jsx:62:8)
+
+ FAIL  src/__tests__/src/Countdown.test.jsx
+  ● Countdown Component › renders countdown when it is not the user's birthday
+
+    Unable to find an element with the text: Countdown to Alice's Birthday. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+    <body>
+      <div>
+        <div>
+          <h1
+            class="heading"
+          >
+            Countdown to 
+            <span
+              class="highlight"
+            >
+              Alice
+              's
+            </span>
+             Birthday
+          </h1>
+          <div
+            class="countdown-wrapper"
+          >
+            <div
+              class="countdown-box"
+            >
+              10
+              <span
+                class="legend"
+              >
+                Days
+              </span>
+            </div>
+            <div
+              class="countdown-box"
+            >
+              5
+              <span
+                class="legend"
+              >
+                Hours
+              </span>
+            </div>
+            <div
+              class="countdown-box"
+            >
+              30
+              <span
+                class="legend"
+              >
+                Minutes
+              </span>
+            </div>
+            <div
+              class="countdown-box"
+            >
+              45
+              <span
+                class="legend"
+              >
+                Seconds
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </body>
+
+      32 |     expect(screen.getByText("Seconds")).toBeInTheDocument();
+      33 |     expect(
+    > 34 |       screen.getByText("Countdown to Alice's Birthday")
+         |              ^
+      35 |     ).toBeInTheDocument();
+      36 |   });
+      37 |
+
+      at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:34:12)
+      at node_modules/@testing-library/dom/dist/query-helpers.js:71:38
+      at getByText (node_modules/@testing-library/dom/dist/query-helpers.js:54:17)
+      at Object.<anonymous> (src/__tests__/src/Countdown.test.jsx:34:14)
+
+  ● Countdown Component › renders the Wish component when it is the user's birthday
+
+    Unable to find an element with the text: Happy Birthday Bob!. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+    <body>
+      <div>
+        <div
+          class="wish-message"
+        >
+          HAPPY BIRTHDAY 
+          <span
+            class="highlight"
+          >
+            BOB
+          </span>
+           !!!
+        </div>
+      </div>
+    </body>
+
+      44 |     render(<Countdown countdownData={mockCountdownData} name={mockName} />);
+      45 |
+    > 46 |     expect(screen.getByText("Happy Birthday Bob!")).toBeInTheDocument();
+         |                   ^
+      47 |   });
+      48 |
+      49 |   // Additional test cases to ensure full coverage could include:
+
+      at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:34:12)
+      at node_modules/@testing-library/dom/dist/query-helpers.js:71:38
+      at getByText (node_modules/@testing-library/dom/dist/query-helpers.js:54:17)
+      at Object.<anonymous> (src/__tests__/src/Countdown.test.jsx:46:19)
+
+ FAIL  src/__tests__/src/Birthday.test.jsx
+  ● Birthday Component › renders with valid name, day, and month props
+
+    ReferenceError: Router is not defined
+
+      16 |   test("renders with valid name, day, and month props", () => {
+      17 |     render(
+    > 18 |       <Router>
+         |        ^
+      19 |         {" "}
+      20 |         {/* Wrap Generate component with Router */}
+      21 |         <Birthday name="John Doe" day={15} month={5} />
+
+      at Object.<anonymous> (src/__tests__/src/Birthday.test.jsx:18:8)
+
+  ● Birthday Component › handles default props when none are provided
+
+    ReferenceError: Router is not defined
+
+      29 |   test("handles default props when none are provided", () => {
+      30 |     render(
+    > 31 |       <Router>
+         |        ^
+      32 |         {" "}
+      33 |         {/* Wrap Generate component with Router */}
+      34 |         <Birthday />
+
+      at Object.<anonymous> (src/__tests__/src/Birthday.test.jsx:31:8)
+
+  ● Birthday Component › shows generate link when it is not the birthday
+
+    ReferenceError: Router is not defined
+
+      42 |   test("shows generate link when it is not the birthday", () => {
+      43 |     render(
+    > 44 |       <Router>
+         |        ^
+      45 |         {" "}
+      46 |         {/* Wrap Generate component with Router */}
+      47 |         <Birthday name="Jane Doe" day={30} month={12} />{" "}
+
+      at Object.<anonymous> (src/__tests__/src/Birthday.test.jsx:44:8)
+
+  ● Birthday Component › does not show generate link when it is the birthday
+
+    TypeError: jest.setSystemTime is not a function
+
+      56 |     const mockDate = new Date(2023, 11, 30); // Birthday date (month is 0-indexed)
+      57 |     jest.useFakeTimers("modern");
+    > 58 |     jest.setSystemTime(mockDate);
+         |          ^
+      59 |
+      60 |     render(
+      61 |       <Router>
+
+      at Object.<anonymous> (src/__tests__/src/Birthday.test.jsx:58:10)
+
+Test Suites: 6 failed, 6 total
+Tests:       12 failed, 12 total
+Snapshots:   0 total
+Time:        2.256s
+Ran all test suites.
+
+Watch Usage: Press w to show more.
